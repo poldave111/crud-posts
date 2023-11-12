@@ -1,7 +1,8 @@
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
+import styles from './NavBar.module.scss';
 
 function NavBar() {
     return (
@@ -22,8 +23,8 @@ function NavBar() {
 
                     {/* Right Section - Home and About Links */}
                     <Nav className="ml-auto">
-                        <Link to="/" className="nav-link">Home</Link>
-                        <Link to="/post/about" className="nav-link">About</Link>
+                        <NavLink to="/" className={({ isActive }) => isActive ? styles.linkActive : undefined}>Home</NavLink>
+                        <NavLink to="/post/about" className={({ isActive }) => isActive ? styles.linkActive : undefined}>About</NavLink>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
