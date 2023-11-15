@@ -4,7 +4,7 @@ import { Container } from 'react-bootstrap';
 import shortid from 'shortid';
 import { useParams, Navigate } from 'react-router';
 import PostForm from '../PostForm.js/PostForm';
-import { addPost } from '../../../redux/postsRedux';
+import { addPost, editPost } from '../../../redux/postsRedux';
 import { useNavigate } from 'react-router-dom';
 import { getPostById } from '../../../redux/postsRedux';
 
@@ -20,8 +20,8 @@ const EditPostForm = props => {
     }
     
 
-    const handleSubmit = formData => {
-        dispatch(addPost({...formData, id: shortid()}));
+    const handleSubmit = postData => {
+        dispatch(editPost({...postData, id}));
         navigate("/");
     }
 
