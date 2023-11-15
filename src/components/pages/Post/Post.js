@@ -3,6 +3,7 @@ import { useParams, Navigate } from 'react-router';
 import { useSelector, useDispatch } from "react-redux";
 import { getPostById } from "../../../redux/postsRedux";
 import { deleteCard } from '../../../redux/postsRedux';
+import { Link } from 'react-router-dom';
 import { Button, Container, Modal } from 'react-bootstrap';
 import styles from './Post.module.scss';
 import ModalPost from '../../common/Modal/Modal';
@@ -16,7 +17,6 @@ const Post = props => {
     const handleDeleteButton = () => {
         setShowModal(true);
         dispatch(deleteCard(id));
-
     }
 
     const handleCloseModal = () => {
@@ -46,7 +46,7 @@ const Post = props => {
             <div className={styles.titleSection}>
                 <div><h1>{postData.title}</h1></div>
                 <div>
-                    <Button variant="outline-info">Edit</Button>{' '}
+                    <Link key={props.id} to={`/post/edit/${id}`} ><Button variant="outline-info">Edit</Button>{' '}</Link>
                     <Button variant="outline-danger" onClick={handleDeleteButton}>Delete</Button>{' '}
                 </div>
             </div>

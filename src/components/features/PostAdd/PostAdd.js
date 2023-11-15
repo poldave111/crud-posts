@@ -1,5 +1,5 @@
 import React from 'react';
-import AddPostForm from '../../common/AddPostForm/AddPostForm';
+import AddPostForm from '../../pages/AddPostForm/AddPostForm';
 import { useSelector } from "react-redux";
 
 const PostAdd = props => {
