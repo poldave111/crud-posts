@@ -23,8 +23,8 @@ function NavBar() {
 
                     {/* Right Section - Home and About Links */}
                     <Nav className="ml-auto">
-                        <Nav.Link as={NavLink} to="/">Home</Nav.Link>
-                        <Nav.Link as={NavLink} to="/post/about">About</Nav.Link>
+                        <NavLink to="/" className={({ isActive }) => isActive ? styles.isActive : undefined}>Home</NavLink>
+                        <NavLink to="/post/about" className={({ isActive }) => isActive ? styles.isActive : undefined}>About</NavLink>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

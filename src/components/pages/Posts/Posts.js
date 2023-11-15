@@ -17,7 +17,7 @@ const Posts = props => {
                 </Col>
                 <Col>
                     <Link key={props.id} to="/post/add" >
-                        <Button variant="primary">Read more</Button> 
+                        <Button variant="outline-info">Add Post</Button>{' '}
                     </Link>
                     {/* <Nav.Link as={NavLink} to="/post/add"><Button variant="outline-dark">Add Post</Button></Nav.Link> */}
                 </Col>
