@@ -8,8 +8,8 @@ const SmallPost = props => {
     console.log('props.id', props.id);
     return (
         
-        <>
-            <Card style={{ width: '18rem' }}>
+        <div className="mb-3 ">
+             <Card style={{ width: '18rem'}} className="mb-4 m-4 p-2">
                 <Card.Body>
                     <Card.Title>{props.title}</Card.Title>
                     <Card.Text>
@@ -18,13 +18,11 @@ const SmallPost = props => {
                         <div>{props.shortDescription}</div>
                     </Card.Text>
                     <Link key={props.id} to={`/post/${props.id}`} >
-                        <Button variant="primary">Read more</Button> 
+                        <Button variant="dark">Read more</Button> 
                     </Link>
-                    {/* <Button variant="primary">Read more</Button> */}
                 </Card.Body>
             </Card>
-        </>
-
+        </div>
     );
 }
 

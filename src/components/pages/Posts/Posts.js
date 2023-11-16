@@ -4,37 +4,28 @@ import { useSelector } from "react-redux";
 import SmallPost from '../SmallPost/SmallPost';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import styles from './Posts.module.scss';
 
 const Posts = props => {
     const posts = useSelector(state => state.posts);
     console.log('posts', posts);
     return (
         <>
-            <Container>
-             <Row className="justify-content-between align-items-center mx-auto" style={{ paddingTop: '4rem'}}>
-                <Col>
-                    <h1>All posts</h1>
-                </Col>
-                <Col>
-                    <Link key={props.id} to="/post/add" >
-                        <Button variant="outline-info">Add Post</Button>{' '}
-                    </Link>
-                    {/* <Nav.Link as={NavLink} to="/post/add"><Button variant="outline-dark">Add Post</Button></Nav.Link> */}
-                </Col>
-            </Row>
-        </Container>
-        <Container>
-           
-            <Row className="justify-content-center align-items-center" style={{ paddingTop: '4rem', paddingBottom: '8rem' }}>
+            <div className="d-flex justify-content-between mb-4 mx-5 mt-3">
+                <h1 className="mb-3">All posts</h1>
+                <Link key={props.id} to="/post/add" >
+                    <Button variant="outline-dark">Add Post</Button>{' '}
+                </Link>
+            </div>
+
+            <div className="d-flex justify-content-center">
                 {posts.map((post) => (
-                    <Col xs={12} md={6} lg={4} key={post.id} className="mb-4 my-auto">
-                        <SmallPost id={post.id} title={post.title} author={post.author} shortDescription={post.shortDescription} publishedDate={post.publishedDate} />
-                    </Col>
+                    <SmallPost id={post.id} title={post.title} author={post.author} shortDescription={post.shortDescription} publishedDate={post.publishedDate} className="mb-3" />
                 ))}
-            </Row>
-        </Container>
+            </div>
         </>
-        
+
+
 
     );
 }

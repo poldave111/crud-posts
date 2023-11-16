@@ -26,9 +26,9 @@ const EditPostForm = props => {
     }
 
     return (
-        <Container>
+        <>
             <PostForm action={handleSubmit} {...postData} actionButton={"Edit Post"}/>
-        </Container>
+        </>
     );
 }
 

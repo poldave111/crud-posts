@@ -38,34 +38,31 @@ const PostForm = props => {
 
     return (
         <Container>
-            <Form onSubmit={handleSubmit}>
-                {/* Single-line fields */}
-                <Row className="mb-3">
-                    <Form.Group as={Row} controlId="field1">
+            <Form onSubmit={handleSubmit} className="px-5 pt-3">
+             
+                    <Form.Group className="mb-3 px-3" as={Row} controlId="field1">
                         <Form.Label>Title</Form.Label>
                         <Form.Control type="text" placeholder="Enter title" name="title" value={title} onChange={e => setTitle(e.target.value)} />
                     </Form.Group>
 
-                    <Form.Group as={Row} controlId="field2">
+                    <Form.Group className="mb-3 px-3" as={Row} controlId="field2">
                         <Form.Label>Author</Form.Label>
                         <Form.Control type="text" placeholder="Enter author" name="author" value={author} onChange={e => setAuthor(e.target.value)} />
                     </Form.Group>
 
-                    <Form.Group as={Row} controlId="field3">
+                    <Form.Group className="mb-3 px-3" as={Row} controlId="field3">
                         <Form.Label>Published</Form.Label>
                         <Form.Control type="text" placeholder="Enter date" name="publishedDate" value={publishedDate} onChange={e => setPublishedDate(e.target.value)} />
                     </Form.Group>
-                </Row>
 
-                {/* Larger fields */}
-                <Row className="mb-3">
+                <Row className="mb-3 px-1">
                     <Form.Group as={Col} controlId="largerField1">
                         <Form.Label>Short description</Form.Label>
                         <Form.Control as="textarea" rows={4} placeholder="Leave a comment here" name="shortDescription" value={shortDescription} onChange={e => setShortDescription(e.target.value)} />
                     </Form.Group>
                 </Row>
 
-                <Row className="mb-3">
+                <Row className="mb-3 px-1">
                     <Form.Group as={Col} controlId="largerField2">
                         <Form.Label>Main content</Form.Label>
                         <Form.Control as="textarea" rows={4} placeholder="Leave a comment here" name="content" value={content} onChange={e => setContent(e.target.value)} />

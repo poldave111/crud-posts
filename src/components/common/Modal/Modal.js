@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 function ModalPost() {
   return (
     <div
-      className="modal show"
+  
       style={{ display: 'block', position: 'initial' }}
     >
       <Modal.Dialog>

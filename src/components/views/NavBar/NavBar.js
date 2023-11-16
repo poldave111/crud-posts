@@ -1,5 +1,6 @@
 import Navbar from 'react-bootstrap/Navbar';
 import { Link, NavLink } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import styles from './NavBar.module.scss';
@@ -22,9 +23,15 @@ function NavBar() {
                     </Nav>
 
                     {/* Right Section - Home and About Links */}
+
                     <Nav className="ml-auto">
-                        <NavLink to="/" className={({ isActive }) => isActive ? styles.isActive : undefined}>Home</NavLink>
-                        <NavLink to="/post/about" className={({ isActive }) => isActive ? styles.isActive : undefined}>About</NavLink>
+                        <NavLink to="/" className={({ isActive }) => isActive ? styles.isActive : undefined} style={{ marginRight: '10px' }}>
+                            <Button variant="secondary">Home</Button>
+                        </NavLink>
+
+                        <NavLink to="/post/about" className={({ isActive }) => isActive ? styles.isActive : undefined}>
+                            <Button variant="secondary">About</Button>
+                        </NavLink>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
