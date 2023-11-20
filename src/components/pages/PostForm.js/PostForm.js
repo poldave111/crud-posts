@@ -29,8 +29,10 @@ const PostForm = props => {
     //     const {name, value} = e.target;
     //     setFormData({...formData, [name]: value });
     // }
-    const categories = useSelector((state) => state.categories); 
-    console.log('categories', state);
+    const categories = useSelector(state => { console.log(state)});
+
+    console.log(categories);
+    
     const dispatch = useDispatch(); 
     
     const handleSubmit = e => {
