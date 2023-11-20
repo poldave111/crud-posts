@@ -13,15 +13,16 @@ function App() {
   return (
     <main>
       <Container>
-      <Header />
-        <Routes>
-          <Route path="/" element={<Posts />} />
-          <Route path="/post/:id" element={<Post />} />
-          <Route path="/post/add" element={<PostAdd />} />
-          <Route path="/post/edit/:id" element={<EditPostForm />} />
-          <Route path="/post/about" element={<About />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Header />
+          <Routes>
+            <Route path="/" element={<Posts />} />
+            <Route path="/post/:id" element={<Post />} />
+            <Route path="/post/add" element={<PostAdd />} />
+            <Route path="/post/edit/:id" element={<EditPostForm />} />
+            <Route path="/post/about" element={<About />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+
         <Footer />
       </Container>
 

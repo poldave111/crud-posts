@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Form, Container, Row, Col, Button } from 'react-bootstrap';
-
+import { useDispatch, useSelector } from 'react-redux';
 const PostForm = props => {
 
     
@@ -20,6 +20,7 @@ const PostForm = props => {
     const [content, setContent] = useState(props.content || '');
     const [contentErr, setContentErr] = useState(false);
     const [publishedDateErr, setPublishedDateErr] = useState(false);
+    const [selectedCategory, setSelectedCategory] = useState('');
 
     console.log(title);
     // const handleChange = (e) => {
@@ -28,7 +29,10 @@ const PostForm = props => {
     //     const {name, value} = e.target;
     //     setFormData({...formData, [name]: value });
     // }
-
+    const categories = useSelector((state) => state.categories); 
+    console.log('categories', state);
+    const dispatch = useDispatch(); 
+    
     const handleSubmit = e => {
         //e.preventDefault();
         setContentErr(!content); // if field empty - set error to true
@@ -37,6 +41,11 @@ const PostForm = props => {
             props.action({ title, author, publishedDate, shortDescription, content });
         }
     };
+
+    // const handleCategoryChange = (e) => {
+    //     setSelectedCategory(e.target.value);
+    //     dispatch(setCategory(e.target.value));
+    // }
 
     const { register, handleSubmit: validate, formState: { errors } } = useForm();
 
@@ -72,6 +81,22 @@ const PostForm = props => {
                         <Form.Control type="text" placeholder="Enter date" name="publishedDate" value={publishedDate} onChange={e => setPublishedDate(e.target.value)} />
                         {publishedDateErr && <small className="d-block form-text text-danger mt-2">Published date can't be empty</small>}
                     </Form.Group>
+{/* 
+                    <Form.Group className="mb-3 px-3" as={Row} controlId="field4">
+                        <Form.Label>Category</Form.Label>
+                        <Form.Control 
+                            as="select"
+                            value={selectedCategory}
+                            onChange={(e) => {setSelectedCategory(e.target.value)}}
+                        >
+                            <option value="" disabled>Select a category</option>
+                            {categories.map(category => (
+                                <option key={category.id} value={category.id}>
+                                    {category.name}
+                                </option>
+                            ))}
+                        </Form.Control>
+                    </Form.Group> */}
 
                 <Row className="mb-3 px-1">
                     <Form.Group as={Col} controlId="largerField1">
