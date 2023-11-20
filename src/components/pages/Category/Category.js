@@ -16,6 +16,7 @@ const Category = props => {
         <>
             {/* {posts.map(post => console.log(post))} */}
             {posts.map(post => {
+                // <link>{post}</link>
                 <SmallPost {...post} />
             })}
         </>
