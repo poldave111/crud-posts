@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
-import { useParams, Navigate } from 'react-router';
-import { useSelector, useDispatch } from "react-redux";
-import { getPostById } from "../../../redux/postsRedux";
-import { deleteCard } from '../../../redux/postsRedux';
+import { useForm } from "react-hook-form";
 import { Form, Container, Row, Col, Button } from 'react-bootstrap';
-import ModalPost from '../../common/Modal/Modal';
 
 const PostForm = props => {
 
@@ -22,6 +18,8 @@ const PostForm = props => {
     const [publishedDate, setPublishedDate] = useState(props.publishedDate || '');
     const [shortDescription, setShortDescription] = useState(props.shortDescription || '');
     const [content, setContent] = useState(props.content || '');
+    const [contentErr, setContentErr] = useState(false);
+    const [publishedDateErr, setPublishedDateErr] = useState(false);
 
     console.log(title);
     // const handleChange = (e) => {
@@ -32,33 +30,59 @@ const PostForm = props => {
     // }
 
     const handleSubmit = e => {
-        e.preventDefault();
-        props.action({ title, author, publishedDate, shortDescription, content });
+        //e.preventDefault();
+        setContentErr(!content); // if field empty - set error to true
+        setPublishedDateErr(!publishedDate);
+        if(content && publishedDate) {
+            props.action({ title, author, publishedDate, shortDescription, content });
+        }
     };
+
+    const { register, handleSubmit: validate, formState: { errors } } = useForm();
 
     return (
         <Container>
-            <Form onSubmit={handleSubmit} className="px-5 pt-3">
+            <Form onSubmit={validate(handleSubmit)} className="px-5 pt-3">
              
                     <Form.Group className="mb-3 px-3" as={Row} controlId="field1">
                         <Form.Label>Title</Form.Label>
-                        <Form.Control type="text" placeholder="Enter title" name="title" value={title} onChange={e => setTitle(e.target.value)} />
+                        <Form.Control 
+                             {...register("title", { required: true, minLength: 3 })}
+                             value={title}
+                             onChange={e => setTitle(e.target.value)}
+                             type="text" placeholder="Enter title"
+                           />
+                           {errors.title && <small className="d-block form-text text-danger mt-2">Title is too short (min is 3)</small>}
                     </Form.Group>
 
                     <Form.Group className="mb-3 px-3" as={Row} controlId="field2">
                         <Form.Label>Author</Form.Label>
-                        <Form.Control type="text" placeholder="Enter author" name="author" value={author} onChange={e => setAuthor(e.target.value)} />
+                        <Form.Control
+                            {...register("author", { required: true, minLength: 3 })}
+                            type="text"
+                            value={author}
+                            onChange={e => setAuthor(e.target.value)}
+                            placeholder="Enter author"
+                        />
+                        {errors.author && <small className="d-block form-text text-danger mt-2">Title is too short (min is 3)</small>}       
                     </Form.Group>
 
                     <Form.Group className="mb-3 px-3" as={Row} controlId="field3">
                         <Form.Label>Published</Form.Label>
                         <Form.Control type="text" placeholder="Enter date" name="publishedDate" value={publishedDate} onChange={e => setPublishedDate(e.target.value)} />
+                        {publishedDateErr && <small className="d-block form-text text-danger mt-2">Published date can't be empty</small>}
                     </Form.Group>
 
                 <Row className="mb-3 px-1">
                     <Form.Group as={Col} controlId="largerField1">
                         <Form.Label>Short description</Form.Label>
-                        <Form.Control as="textarea" rows={4} placeholder="Leave a comment here" name="shortDescription" value={shortDescription} onChange={e => setShortDescription(e.target.value)} />
+                        <Form.Control 
+                            {...register("shortDescription", {required: true, minLength: 20 })}
+                            as="textarea" rows={4} 
+                            placeholder="Leave a comment here" 
+                            value={shortDescription} 
+                            onChange={e => setShortDescription(e.target.value)} />
+                            {errors.shortDescription && <small className="d-block form-text text-danger mt-2">Title is too short (min is 20)</small>} 
                     </Form.Group>
                 </Row>
 
@@ -66,6 +90,7 @@ const PostForm = props => {
                     <Form.Group as={Col} controlId="largerField2">
                         <Form.Label>Main content</Form.Label>
                         <Form.Control as="textarea" rows={4} placeholder="Leave a comment here" name="content" value={content} onChange={e => setContent(e.target.value)} />
+                        {contentErr && <small className="d-block form-text text-danger mt-2">Content date can't be empty</small>}
                     </Form.Group>
                 </Row>
 
