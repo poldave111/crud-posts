@@ -12,7 +12,7 @@ const PostForm = props => {
     //     shortDescription: props.shortDescription || '',
     //     content: props.content || '',
     // });
-    console.log('props title', props.title);
+
     const [title, setTitle] = useState(props.title || '');
     const [author, setAuthor] = useState(props.author || '');
     const [publishedDate, setPublishedDate] = useState(props.publishedDate || '');
@@ -22,17 +22,16 @@ const PostForm = props => {
     const [publishedDateErr, setPublishedDateErr] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('');
 
-    console.log(title);
     // const handleChange = (e) => {
     //     // const key = e.target.name;
     //     // const value = e.target.value;
     //     const {name, value} = e.target;
     //     setFormData({...formData, [name]: value });
     // }
-    const categories = useSelector(state => { console.log(state)});
+    const categories = useSelector(state => state.categories); 
 
-    console.log(categories);
-    
+    console.log('state bez cateries', categories);
+   
     const dispatch = useDispatch(); 
     
     const handleSubmit = e => {
@@ -83,8 +82,8 @@ const PostForm = props => {
                         <Form.Control type="text" placeholder="Enter date" name="publishedDate" value={publishedDate} onChange={e => setPublishedDate(e.target.value)} />
                         {publishedDateErr && <small className="d-block form-text text-danger mt-2">Published date can't be empty</small>}
                     </Form.Group>
-{/* 
-                    <Form.Group className="mb-3 px-3" as={Row} controlId="field4">
+
+                     <Form.Group className="mb-3 px-3" as={Row} controlId="field4">
                         <Form.Label>Category</Form.Label>
                         <Form.Control 
                             as="select"
@@ -94,11 +93,11 @@ const PostForm = props => {
                             <option value="" disabled>Select a category</option>
                             {categories.map(category => (
                                 <option key={category.id} value={category.id}>
-                                    {category.name}
+                                    {category}
                                 </option>
                             ))}
                         </Form.Control>
-                    </Form.Group> */}
+                    </Form.Group> 
 
                 <Row className="mb-3 px-1">
                     <Form.Group as={Col} controlId="largerField1">

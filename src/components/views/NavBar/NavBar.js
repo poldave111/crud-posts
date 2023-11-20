@@ -29,6 +29,10 @@ function NavBar() {
                             <Button variant="secondary">Home</Button>
                         </NavLink>
 
+                        <NavLink to="/post/categories" className={({ isActive }) => isActive ? styles.isActive : undefined}>
+                            <Button variant="secondary">Categories</Button>
+                        </NavLink>
+
                         <NavLink to="/post/about" className={({ isActive }) => isActive ? styles.isActive : undefined}>
                             <Button variant="secondary">About</Button>
                         </NavLink>

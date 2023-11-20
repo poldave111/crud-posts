@@ -1,5 +1,5 @@
 const initialState = {
-    posts: [
+    posts : [
     {
         id: '1',
         title: 'First Article',
@@ -29,7 +29,7 @@ const initialState = {
 
       },
     ], 
-    categories: [
+    categories : [
       'weather', 
       'news',
       'sport',

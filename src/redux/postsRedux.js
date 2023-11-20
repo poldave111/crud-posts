@@ -2,6 +2,9 @@ import shortid from 'shortid';
 
 // selectors
 export const getPostById = ({ posts }, postId) => posts.find(post => post.id == postId);
+export const getPostsByCategory = ({ posts }, category) => posts.filter(post => post.category === category);
+
+
 // actions
 const createActionName = actionName => `app/posts/${actionName}`;
 const DELETE_CARD = createActionName('DELETE_CARD');
