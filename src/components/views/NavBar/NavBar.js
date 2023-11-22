@@ -7,39 +7,37 @@ import styles from './NavBar.module.scss';
 
 function NavBar() {
     return (
-        <Navbar expand="lg" className="bg-body-tertiary rounded" bg="dark" variant="dark"  >
-            <Container fluid>
-                {/* Left Section - Posts CRUD */}
-
-                <Navbar.Collapse id="navbarScroll">
-                    <Nav
-                        className="me-auto my-2 my-lg-0"
-                        style={{ maxHeight: '100px' }}
-                        navbarScroll
-                    >
-                        <Navbar.Brand as={Link} to="/">Posts CRUD</Navbar.Brand>
-                        <Navbar.Toggle aria-controls="navbarScroll" />
-                        {/* Add more CRUD links as needed */}
-                    </Nav>
-
-                    {/* Right Section - Home and About Links */}
-
-                    <Nav className="ml-auto">
-                        <NavLink to="/" className={({ isActive }) => isActive ? styles.isActive : undefined} style={{ marginRight: '10px' }}>
-                            <Button variant="secondary">Home</Button>
-                        </NavLink>
-
-                        <NavLink to="/post/categories" className={({ isActive }) => isActive ? styles.isActive : undefined}>
-                            <Button variant="secondary">Categories</Button>
-                        </NavLink>
-
-                        <NavLink to="/post/about" className={({ isActive }) => isActive ? styles.isActive : undefined}>
-                            <Button variant="secondary">About</Button>
-                        </NavLink>
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+        <Navbar expand="lg" className="bg-body-tertiary rounded" bg="dark" variant="dark">
+        <Container fluid>
+          {/* Left Section - Posts CRUD */}
+          <Navbar.Collapse id="navbarScroll">
+            <Nav
+              className="me-auto my-2 my-lg-0"
+              style={{ maxHeight: '100px' }}
+              navbarScroll
+            >
+              <Navbar.Brand as={Link} to="/">Posts CRUD</Navbar.Brand>
+              <Navbar.Toggle aria-controls="navbarScroll" />
+              {/* Add more CRUD links as needed */}
+            </Nav>
+      
+            {/* Right Section - Home and About Links */}
+            <Nav className="ml-auto">
+              <NavLink to="/" className={({ isActive }) => isActive ? styles.isActive : undefined}>
+                <Button variant="secondary" className={styles.buttonWidth}>Home</Button>
+              </NavLink>
+      
+              <NavLink to="/post/categories" className={({ isActive }) => isActive ? styles.isActive : undefined}>
+                <Button variant="secondary" className={styles.buttonWidth}>Categories</Button>
+              </NavLink>
+      
+              <NavLink to="/post/about" className={({ isActive }) => isActive ? styles.isActive : undefined}>
+                <Button variant="secondary" className={styles.buttonWidth}>About</Button>
+              </NavLink>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     );
 }
 

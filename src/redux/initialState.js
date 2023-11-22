@@ -5,7 +5,7 @@ const initialState = {
         title: 'First Article',
         shortDescription: 'Short description of the first article...',
         content: 'Main content of the first article',
-        publishedDate: '02-02-2022',
+        publishedDate: new Date(),
         author: 'John Doe',
         category: 'weather',
       },
@@ -14,16 +14,16 @@ const initialState = {
         title: 'Second Article',
         shortDescription: 'Short description of the second article...',
         content: 'Main content of the second article',
-        publishedDate: '03-15-2022',
+        publishedDate: new Date(),
         author: 'Jane Smith',
-        category: 'music',
+        category: 'news',
       },
       {
         id: '3',
         title: 'Third Article',
         shortDescription: 'Short description of the third article...',
         content: 'Main content of the third article',
-        publishedDate: '05-20-2022',
+        publishedDate: new Date(),
         author: 'Bob Johnson',
         category: 'sport'
 
@@ -33,6 +33,7 @@ const initialState = {
       'weather', 
       'news',
       'sport',
+      
     ]
 };
 

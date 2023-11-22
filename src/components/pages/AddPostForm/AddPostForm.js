@@ -11,6 +11,7 @@ const AddPostForm = props => {
     const navigate = useNavigate(); 
 
     const handleSubmit = formData => {
+        console.log('formData', formData);
         dispatch(addPost({...formData, id: shortid()}));
         navigate("/");
     }

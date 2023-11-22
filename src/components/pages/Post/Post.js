@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { Button, Container, Modal } from 'react-bootstrap';
 import styles from './Post.module.scss';
 import ModalPost from '../../common/Modal/Modal';
+import { dateToStr } from '../../../utils/dateToStr';
 
 const Post = props => {
     const { id } = useParams();
@@ -57,8 +58,9 @@ const Post = props => {
             </div>
             <div className="px-5 mb-4">
                 <div><strong>Author: </strong>{postData.author}</div>
-                <div><strong>Published: </strong>{postData.publishedDate}</div>
-                <div>{postData.content}</div>
+                <div><strong>Published: </strong>{dateToStr(postData.publishedDate)}</div>
+                <div><strong>Category: </strong>{postData.category}</div>
+                <div dangerouslySetInnerHTML={{ __html: postData.content }}></div>
             </div>
         
         </Container>

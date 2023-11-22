@@ -2,10 +2,12 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
-
+import { dateToStr } from '../../../utils/dateToStr';
 
 const SmallPost = props => {
     console.log('props.id', props.id);
+    console.log('small post publishedDate', props.publishedDate);
+
     return (
         
         <div className="mb-3 ">
@@ -15,6 +17,7 @@ const SmallPost = props => {
                     <Card.Text>
                         <div><strong>Author: </strong>{props.author}</div>
                         <div><strong>Published: </strong>{props.publishedDate}</div>
+                        <div><strong>Category: </strong>{props.selectedCategory}</div>
                         <div>{props.shortDescription}</div>
                     </Card.Text>
                     <Link key={props.id} to={`/post/${props.id}`} >
