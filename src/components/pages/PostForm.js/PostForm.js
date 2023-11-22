@@ -22,13 +22,13 @@ const PostForm = props => {
   
     const [title, setTitle] = useState(props.title || '');
     const [author, setAuthor] = useState(props.author || '');
-    const [publishedDate, setPublishedDate] = useState(props.publishedDate || '');
+    const [publishedDate, setPublishedDate] = useState(props.publishedDate || new Date());
     const [shortDescription, setShortDescription] = useState(props.shortDescription || '');
     const [content, setContent] = useState(props.content || '');
     const [contentErr, setContentErr] = useState(false);
     const [publishedDateErr, setPublishedDateErr] = useState(false);
     const [category, setCategory] = useState(props.category || '');
-    const [startDate, setStartDate] = useState(props.publishedDate || new Date());
+    //const [startDate, setStartDate] = useState(props.publishedDate || new Date());
 
    
     // const handleChange = (e) => {
@@ -38,7 +38,6 @@ const PostForm = props => {
     //     setFormData({...formData, [name]: value });
     // }
 
-    console.log('xxx', props.publishedDate);
     const categories = useSelector(state => state.categories);
 
     console.log('state bez cateries', categories);
@@ -51,7 +50,7 @@ const PostForm = props => {
         setContentErr(!content); // if field empty - set error to true
         setPublishedDateErr(!publishedDate);
         if (content && publishedDate) {
-            props.action({ title, author, publishedDate: startDate, shortDescription, content, category });
+            props.action({ title, author, publishedDate, shortDescription, content, category });
         }
     };
 
@@ -91,7 +90,7 @@ const PostForm = props => {
 
                 <Form.Group className="mb-3 px-3" as={Row} controlId="field3">
                     <Form.Label>Published</Form.Label>
-                    <DatePicker selected={startDate} onChange={(date) => {setStartDate(date); setPublishedDate(date)}} />
+                    <DatePicker selected={publishedDate} onChange={(date) => {setPublishedDate(date)}} />
                     {/* <Form.Control type="text" placeholder="Enter date" name="publishedDate" value={publishedDate} onChange={e => setPublishedDate(e.target.value)} /> */}
                     {/* {publishedDateErr && <small className="d-block form-text text-danger mt-2">Published date can't be empty</small>} */}
                 </Form.Group>
